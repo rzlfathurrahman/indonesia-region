@@ -1,0 +1,87 @@
+{
+  "name": "@cazh/indonesia-wilayah",
+  "version": "1.0.0",
+  "description": "Library untuk data wilayah administratif Indonesia dengan modular architecture, high performance, dan CLI",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wilayah": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./repositories": {
+      "types": "./dist/repositories/index.d.ts",
+      "default": "./dist/repositories/index.js"
+    },
+    "./services/*": {
+      "types": "./dist/services/*.d.ts",
+      "default": "./dist/services/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "seed": "ts-node src/seed.ts",
+    "cli": "ts-node src/cli/index.ts",
+    "codegen": "ts-node src/services/codegen.service.ts",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [
+    "indonesia",
+    "wilayah",
+    "provinsi",
+    "kabupaten",
+    "kecamatan",
+    "kelurahan",
+    "region",
+    "administrative",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^20.11.5",
+    "eslint": "^8.56.0",
+    "sqlite3": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "knex": "^3.1.0"
+  },
+  "peerDependencies": {
+    "better-sqlite3": ">=9.0.0",
+    "express": ">=4.0.0",
+    "mysql2": ">=3.0.0",
+    "pg": ">=8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "better-sqlite3": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "mysql2": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
+    }
+  }
+}
