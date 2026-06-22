@@ -9,3 +9,7 @@ node_modules/*
 tsconfig.json
 vitest.config.ts
 .gitignore
+.github
+.husky
+commitlint.config.js
+.releaserc.yml

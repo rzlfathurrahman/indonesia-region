@@ -36,7 +36,9 @@
     "cli": "ts-node src/cli/index.ts",
     "codegen": "ts-node src/services/codegen.service.ts",
     "test": "vitest",
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "prepare": "husky || true",
+    "commitlint": "commitlint --from=HEAD~1"
   },
   "keywords": [
     "indonesia",
@@ -52,9 +54,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/better-sqlite3": "^7.6.8",
     "@types/node": "^20.11.5",
     "eslint": "^8.56.0",
+    "husky": "^9.0.0",
+    "semantic-release": "^23.0.0",
     "sqlite3": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
