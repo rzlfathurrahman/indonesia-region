@@ -1,5 +1,5 @@
 {
-  "name": "@cazh/indonesia-wilayah",
+  "name": "@zalon/indonesia-wilayah",
   "version": "1.0.0",
   "description": "Library untuk data wilayah administratif Indonesia dengan modular architecture, high performance, dan CLI",
   "main": "dist/index.js",

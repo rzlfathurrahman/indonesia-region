@@ -1,11 +1,11 @@
 # 🇮🇩 Indonesia Wilayah
 
-[![npm version](https://img.shields.io/npm/v/@cazh/indonesia-wilayah.svg)](https://www.npmjs.com/package/@cazh/indonesia-wilayah)
+[![npm version](https://img.shields.io/npm/v/@zalon/indonesia-wilayah.svg)](https://www.npmjs.com/package/@zalon/indonesia-wilayah)
 [![CI](https://github.com/rzlfathurrahman/indonesia-region/actions/workflows/ci.yml/badge.svg)](https://github.com/rzlfathurrahman/indonesia-region/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org/)
-[![Downloads](https://img.shields.io/npm/dt/@cazh/indonesia-wilayah.svg)](https://www.npmjs.com/package/@cazh/indonesia-wilayah)
+[![Downloads](https://img.shields.io/npm/dt/@zalon/indonesia-wilayah.svg)](https://www.npmjs.com/package/@zalon/indonesia-wilayah)
 
 Library Node.js untuk data wilayah administratif Indonesia dengan modular architecture, high performance, dan CLI.
 
@@ -64,27 +64,27 @@ Library Node.js untuk data wilayah administratif Indonesia dengan modular archit
 
 ### Full Install (All Features)
 ```bash
-npm install @cazh/indonesia-wilayah better-sqlite3
+npm install @zalon/indonesia-wilayah better-sqlite3
 ```
 
 ### Minimal Install (Core Only)
 ```bash
-npm install @cazh/indonesia-wilayah
+npm install @zalon/indonesia-wilayah
 ```
 
 ### PostgreSQL
 ```bash
-npm install @cazh/indonesia-wilayah pg
+npm install @zalon/indonesia-wilayah pg
 ```
 
 ### MySQL
 ```bash
-npm install @cazh/indonesia-wilayah mysql2
+npm install @zalon/indonesia-wilayah mysql2
 ```
 
 ### With Express (for API Generator)
 ```bash
-npm install @cazh/indonesia-wilayah express @types/express
+npm install @zalon/indonesia-wilayah express @types/express
 ```
 
 ## Quick Start
@@ -95,7 +95,7 @@ import {
   createProvinceRepo, 
   createHierarchyService,
   closeDb 
-} from '@cazh/indonesia-wilayah';
+} from '@zalon/indonesia-wilayah';
 
 // Initialize database
 const db = initialize({ client: 'sqlite3' });
@@ -237,7 +237,7 @@ Sync Options:
 
 ```typescript
 // Initialize database
-import { initialize, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 // ... use library
@@ -247,7 +247,7 @@ closeDb();
 ### Repositories
 
 ```typescript
-import { createProvinceRepo, createRegencyRepo, createDistrictRepo, createVillageRepo } from '@cazh/indonesia-wilayah';
+import { createProvinceRepo, createRegencyRepo, createDistrictRepo, createVillageRepo } from '@zalon/indonesia-wilayah';
 
 // Province
 const provinceRepo = createProvinceRepo(db);
@@ -273,7 +273,7 @@ await villageRepo.findByDistrict('3171010');
 
 ```typescript
 // Hierarchy
-import { createHierarchyService } from '@cazh/indonesia-wilayah';
+import { createHierarchyService } from '@zalon/indonesia-wilayah';
 
 const hierarchy = createHierarchyService(db);
 await hierarchy.getFullAddress('3171010001');
@@ -282,7 +282,7 @@ await hierarchy.getAncestors('3171010001');
 await hierarchy.searchByKeyword('JAKARTA');
 
 // Search
-import { createSearchService } from '@cazh/indonesia-wilayah';
+import { createSearchService } from '@zalon/indonesia-wilayah';
 
 const search = createSearchService(db);
 await search.search('JAKARTA', { levels: ['province', 'regency'] });
@@ -290,7 +290,7 @@ await search.searchExact('ACEH');
 await search.autocomplete('jak');
 
 // GeoJSON
-import { createGeoJsonService } from '@cazh/indonesia-wilayah';
+import { createGeoJsonService } from '@zalon/indonesia-wilayah';
 
 const geojson = createGeoJsonService(db);
 await geojson.exportProvinces();
@@ -298,7 +298,7 @@ await geojson.exportRegencies('31');
 await geojson.exportHierarchyWithFullPath();
 
 // Statistics
-import { createStatisticsService } from '@cazh/indonesia-wilayah';
+import { createStatisticsService } from '@zalon/indonesia-wilayah';
 
 const stats = createStatisticsService(db);
 await stats.getFullStats();
@@ -306,7 +306,7 @@ await stats.getTopProvincesByRegionCount(10);
 await stats.getChangeStats('2024-01-01');
 
 // Validation
-import { createValidationService } from '@cazh/indonesia-wilayah';
+import { createValidationService } from '@zalon/indonesia-wilayah';
 
 const validation = createValidationService(db);
 validation.validateCode('3171');
@@ -314,13 +314,13 @@ await validation.validateHierarchy('3171010');
 await validation.validateName('JAKARTA', 'regency');
 
 // Validation Rules
-import { createValidationRulesService } from '@cazh/indonesia-wilayah';
+import { createValidationRulesService } from '@zalon/indonesia-wilayah';
 
 const rules = createValidationRulesService(db);
 await rules.validateObject(data, rules.getProvinceValidationRules());
 
 // Audit
-import { createAuditService } from '@cazh/indonesia-wilayah';
+import { createAuditService } from '@zalon/indonesia-wilayah';
 
 const audit = createAuditService(db);
 await audit.initTable();
@@ -329,7 +329,7 @@ await audit.getRecordHistory('provinces', '99');
 await audit.getUserActivity('user123');
 
 // Bulk Operations
-import { createBulkService } from '@cazh/indonesia-wilayah';
+import { createBulkService } from '@zalon/indonesia-wilayah';
 
 const bulk = createBulkService(db);
 await bulk.bulkInsertProvinces([...]);
@@ -338,7 +338,7 @@ await bulk.bulkSoftDeleteProvinces(['99', '98']);
 await bulk.bulkRestoreProvinces(['99']);
 
 // Soft Delete + Restore
-import { createSoftDeleteService } from '@cazh/indonesia-wilayah';
+import { createSoftDeleteService } from '@zalon/indonesia-wilayah';
 
 const softDelete = createSoftDeleteService(db);
 await softDelete.softDeleteProvince('99');
@@ -347,7 +347,7 @@ await softDelete.getDeletedProvinces();
 await softDelete.getDeletedStats();
 
 // Import/Export
-import { createImportService, createExportService } from '@cazh/indonesia-wilayah';
+import { createImportService, createExportService } from '@zalon/indonesia-wilayah';
 
 const importService = createImportService(db);
 await importService.importProvinces('./data/provinces.csv');
@@ -361,14 +361,14 @@ await exportService.exportHierarchy();
 await exportService.exportFlat();
 
 // Diff
-import { createDiffService } from '@cazh/indonesia-wilayah';
+import { createDiffService } from '@zalon/indonesia-wilayah';
 
 const diff = createDiffService(db);
 const result = await diff.compareWithSource({...});
 console.log(diff.generateReport(result));
 
 // Streaming (for large datasets)
-import { createStreamingService } from '@cazh/indonesia-wilayah';
+import { createStreamingService } from '@zalon/indonesia-wilayah';
 
 const streaming = createStreamingService(db);
 await streaming.streamVillages(async (batch) => {
@@ -377,14 +377,14 @@ await streaming.streamVillages(async (batch) => {
 });
 
 // Compression
-import { createCompressionService } from '@cazh/indonesia-wilayah';
+import { createCompressionService } from '@zalon/indonesia-wilayah';
 
 const compression = createCompressionService();
 await compression.compressFile('data.json', 'data.json.gz', 'gzip');
 await compression.decompressFile('data.json.gz', 'data.json', 'gzip');
 
 // Geocoding
-import { createGeocodingService } from '@cazh/indonesia-wilayah';
+import { createGeocodingService } from '@zalon/indonesia-wilayah';
 
 const geocoding = createGeocodingService(db);
 await geocoding.initGeoColumns();
@@ -393,7 +393,7 @@ await geocoding.findNearby('regency', { latitude: -6.2088, longitude: 106.8456 }
 await geocoding.calculateDistance(coord1, coord2);
 
 // Postal Code
-import { createPostalCodeService } from '@cazh/indonesia-wilayah';
+import { createPostalCodeService } from '@zalon/indonesia-wilayah';
 
 const postalCode = createPostalCodeService(db);
 await postalCode.initTable();
@@ -402,7 +402,7 @@ await postalCode.findByVillageCode('1101010001');
 await postalCode.searchPostalCodes('JAKARTA');
 
 // Migration
-import { createMigrationService } from '@cazh/indonesia-wilayah';
+import { createMigrationService } from '@zalon/indonesia-wilayah';
 
 const migration = createMigrationService(db);
 await migration.run(migrations);
@@ -411,7 +411,7 @@ await migration.getStatus(migrations);
 await migration.createMigrationFile('add-postal-codes');
 
 // Backup
-import { createBackupService } from '@cazh/indonesia-wilayah';
+import { createBackupService } from '@zalon/indonesia-wilayah';
 
 const backup = createBackupService(db);
 const backupInfo = await backup.backup({ compression: true });
@@ -419,21 +419,21 @@ await backup.restore(backupInfo.path);
 await backup.listBackups();
 
 // Health Check
-import { createHealthCheckService } from '@cazh/indonesia-wilayah';
+import { createHealthCheckService } from '@zalon/indonesia-wilayah';
 
 const health = createHealthCheckService(db);
 const status = await health.check();
 console.log(status.status); // 'healthy' | 'degraded' | 'unhealthy'
 
 // Code Generation
-import { createCodeGenService } from '@cazh/indonesia-wilayah';
+import { createCodeGenService } from '@zalon/indonesia-wilayah';
 
 const codegen = createCodeGenService(db);
 const types = await codegen.generateTypes();
 await codegen.saveTypesToFile('./src/types/generated.ts');
 
 // API Generator
-import { createApiGeneratorService } from '@cazh/indonesia-wilayah';
+import { createApiGeneratorService } from '@zalon/indonesia-wilayah';
 
 const apiGen = createApiGeneratorService(db);
 const routes = apiGen.generateRoutes();
@@ -444,7 +444,7 @@ const expressRouter = apiGen.generateExpressRouter();
 ### Events
 
 ```typescript
-import { createEventService } from '@cazh/indonesia-wilayah';
+import { createEventService } from '@zalon/indonesia-wilayah';
 
 const events = createEventService(db);
 
@@ -472,7 +472,7 @@ events.onEvent('sync:completed', (event) => {
 ### Cache
 
 ```typescript
-import { createCache } from '@cazh/indonesia-wilayah';
+import { createCache } from '@zalon/indonesia-wilayah';
 
 const cache = createCache({
   ttl: 5 * 60 * 1000,  // 5 minutes
@@ -642,42 +642,42 @@ src/
 
 | Module | Import | Description |
 |--------|--------|-------------|
-| Database | `@cazh/indonesia-wilayah/core` | Multi-DB support |
-| Cache | `@cazh/indonesia-wilayah/core` | LRU cache |
-| Query Builder | `@cazh/indonesia-wilayah/core` | Optimized queries |
-| Province Repo | `@cazh/indonesia-wilayah/repositories` | Province CRUD |
-| Regency Repo | `@cazh/indonesia-wilayah/repositories` | Regency CRUD |
-| District Repo | `@cazh/indonesia-wilayah/repositories` | District CRUD |
-| Village Repo | `@cazh/indonesia-wilayah/repositories` | Village CRUD |
-| Change Repo | `@cazh/indonesia-wilayah/repositories` | Change tracking |
-| Sync Service | `@cazh/indonesia-wilayah/services/sync` | CSV sync |
+| Database | `@zalon/indonesia-wilayah/core` | Multi-DB support |
+| Cache | `@zalon/indonesia-wilayah/core` | LRU cache |
+| Query Builder | `@zalon/indonesia-wilayah/core` | Optimized queries |
+| Province Repo | `@zalon/indonesia-wilayah/repositories` | Province CRUD |
+| Regency Repo | `@zalon/indonesia-wilayah/repositories` | Regency CRUD |
+| District Repo | `@zalon/indonesia-wilayah/repositories` | District CRUD |
+| Village Repo | `@zalon/indonesia-wilayah/repositories` | Village CRUD |
+| Change Repo | `@zalon/indonesia-wilayah/repositories` | Change tracking |
+| Sync Service | `@zalon/indonesia-wilayah/services/sync` | CSV sync |
 
 ### Optional Modules
 
 | Module | Import | Description |
 |--------|--------|-------------|
-| Hierarchy | `@cazh/indonesia-wilayah/services/hierarchy` | Path resolution |
-| Validation | `@cazh/indonesia-wilayah/services/validation` | Code validation |
-| Validation Rules | `@cazh/indonesia-wilayah/services/validation-rules` | Custom rules |
-| Event | `@cazh/indonesia-wilayah/services/event` | Event emitter |
-| Export | `@cazh/indonesia-wilayah/services/export` | JSON/CSV export |
-| GeoJSON | `@cazh/indonesia-wilayah/services/geojson` | GeoJSON export |
-| Search | `@cazh/indonesia-wilayah/services/search` | Full-text search |
-| Bulk | `@cazh/indonesia-wilayah/services/bulk` | Batch operations |
-| Audit | `@cazh/indonesia-wilayah/services/audit` | Audit trail |
-| Statistics | `@cazh/indonesia-wilayah/services/statistics` | Stats & counts |
-| Import | `@cazh/indonesia-wilayah/services/import` | CSV/JSON import |
-| Soft Delete | `@cazh/indonesia-wilayah/services/soft-delete` | Undo capability |
-| Diff | `@cazh/indonesia-wilayah/services/diff` | Diff report |
-| Streaming | `@cazh/indonesia-wilayah/services/streaming` | Large datasets |
-| Compression | `@cazh/indonesia-wilayah/services/compression` | Gzip support |
-| Geocoding | `@cazh/indonesia-wilayah/services/geocoding` | Coordinates |
-| Postal Code | `@cazh/indonesia-wilayah/services/postal-code` | Kode pos |
-| Migration | `@cazh/indonesia-wilayah/services/migration` | Schema versioning |
-| Backup | `@cazh/indonesia-wilayah/services/backup` | Backup/restore |
-| Health Check | `@cazh/indonesia-wilayah/services/health-check` | Monitoring |
-| CodeGen | `@cazh/indonesia-wilayah/services/codegen` | Type generation |
-| API Generator | `@cazh/indonesia-wilayah/services/api-generator` | REST API gen |
+| Hierarchy | `@zalon/indonesia-wilayah/services/hierarchy` | Path resolution |
+| Validation | `@zalon/indonesia-wilayah/services/validation` | Code validation |
+| Validation Rules | `@zalon/indonesia-wilayah/services/validation-rules` | Custom rules |
+| Event | `@zalon/indonesia-wilayah/services/event` | Event emitter |
+| Export | `@zalon/indonesia-wilayah/services/export` | JSON/CSV export |
+| GeoJSON | `@zalon/indonesia-wilayah/services/geojson` | GeoJSON export |
+| Search | `@zalon/indonesia-wilayah/services/search` | Full-text search |
+| Bulk | `@zalon/indonesia-wilayah/services/bulk` | Batch operations |
+| Audit | `@zalon/indonesia-wilayah/services/audit` | Audit trail |
+| Statistics | `@zalon/indonesia-wilayah/services/statistics` | Stats & counts |
+| Import | `@zalon/indonesia-wilayah/services/import` | CSV/JSON import |
+| Soft Delete | `@zalon/indonesia-wilayah/services/soft-delete` | Undo capability |
+| Diff | `@zalon/indonesia-wilayah/services/diff` | Diff report |
+| Streaming | `@zalon/indonesia-wilayah/services/streaming` | Large datasets |
+| Compression | `@zalon/indonesia-wilayah/services/compression` | Gzip support |
+| Geocoding | `@zalon/indonesia-wilayah/services/geocoding` | Coordinates |
+| Postal Code | `@zalon/indonesia-wilayah/services/postal-code` | Kode pos |
+| Migration | `@zalon/indonesia-wilayah/services/migration` | Schema versioning |
+| Backup | `@zalon/indonesia-wilayah/services/backup` | Backup/restore |
+| Health Check | `@zalon/indonesia-wilayah/services/health-check` | Monitoring |
+| CodeGen | `@zalon/indonesia-wilayah/services/codegen` | Type generation |
+| API Generator | `@zalon/indonesia-wilayah/services/api-generator` | REST API gen |
 
 ## Kode Wilayah
 
@@ -702,7 +702,7 @@ src/
 ### Basic Usage
 
 ```typescript
-import { initialize, createProvinceRepo, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, createProvinceRepo, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 const repo = createProvinceRepo(db);
@@ -721,7 +721,7 @@ closeDb();
 ### With Hierarchy
 
 ```typescript
-import { initialize, createHierarchyService, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, createHierarchyService, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 const hierarchy = createHierarchyService(db);
@@ -741,7 +741,7 @@ closeDb();
 ### With Search
 
 ```typescript
-import { initialize, createSearchService, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, createSearchService, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 const search = createSearchService(db);
@@ -761,7 +761,7 @@ closeDb();
 ### With Events
 
 ```typescript
-import { initialize, createEventService, createProvinceRepo, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, createEventService, createProvinceRepo, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 const events = createEventService(db);
@@ -781,7 +781,7 @@ closeDb();
 ### With Backup
 
 ```typescript
-import { initialize, createBackupService, closeDb } from '@cazh/indonesia-wilayah';
+import { initialize, createBackupService, closeDb } from '@zalon/indonesia-wilayah';
 
 const db = initialize({ client: 'sqlite3' });
 const backup = createBackupService(db);
