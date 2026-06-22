@@ -1,0 +1,11 @@
+src/*
+scripts/*
+test/*
+examples/*
+__tests__/*
+*.log
+*.tsbuildinfo
+node_modules/*
+tsconfig.json
+vitest.config.ts
+.gitignore
