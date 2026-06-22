@@ -1,6 +1,6 @@
 {
   "name": "@zalon/indonesia-wilayah",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library untuk data wilayah administratif Indonesia dengan modular architecture, high performance, dan CLI",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

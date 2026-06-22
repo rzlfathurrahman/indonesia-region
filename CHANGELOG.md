@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rzlfathurrahman/indonesia-region/compare/v1.0.0...v1.0.1) (2026-06-22)
+
+
+### Bug Fixes
+
+* set package public access ([1dd33ca](https://github.com/rzlfathurrahman/indonesia-region/commit/1dd33cad8dfd549e1a7de0ffaabc03801cdc1183))
+
 # 1.0.0 (2026-06-22)
 
 
